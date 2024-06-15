@@ -1,8 +1,17 @@
 version: '3'
+
 services:
-  web:
+
+  httpUnderConst:
+    container_name: httpUnderConst
+    restart: always
     image: nginx:alpine
     ports:
-      - "80:80"
+      - "7000:80"
     volumes:
       - ./html:/usr/share/nginx/html:ro
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: "512M"
